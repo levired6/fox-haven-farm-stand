@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState } from 'react';
 import { INVENTORY } from './data/inventory';
 import { Product, Subcategory, CartItem, CompletedOrder } from './types';
@@ -98,7 +97,7 @@ export default function App() {
   };
 
   return (
-    <div style={{ backgroundColor: '#210505', color: '#f3e8dd', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#140303', color: '#fff', minHeight: '100vh' }}>
       
       {/* BRAND HERO HEADER */}
       <header style={{ backgroundColor: '#140303', borderBottom: '2px solid #b8860b', textAlign: 'center', padding: '2.5rem 1rem 1.5rem' }}>
@@ -133,7 +132,6 @@ export default function App() {
 
           <GlassButton
             onClick={() => setIsCartOpen(true)}
-            variant="gold"
             style={{
               padding: '0.6rem 1.4rem',
               borderRadius: '20px',
@@ -163,7 +161,6 @@ export default function App() {
             <GlassButton
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              variant={selectedCategory === cat ? 'gold' : 'outline'}
               style={{
                 padding: '0.5rem 1.1rem',
                 borderRadius: '20px',
@@ -179,7 +176,7 @@ export default function App() {
 
       {/* PRODUCTS GRID */}
       <main style={{ maxWidth: '1200px', margin: '2.5rem auto', padding: '0 1.5rem' }}>
-        <h2 style={{ color: '#d4af37', borderBottom: '1px solid #d4af37', paddingBottom: '0.5rem', marginBottom: '1.8rem' }}>
+        <h2 style={{ color: '#d4af37', borderBottom: '2px solid #d4af37', paddingBottom: '0.5rem', marginBottom: '1.8rem' }}>
           {selectedCategory === 'All' ? 'All Farm Stand Offerings' : selectedCategory}
         </h2>
 
@@ -193,7 +190,7 @@ export default function App() {
                 key={product.id}
                 style={{
                   backgroundColor: '#2b0808',
-                  borderRadius: '10px',
+                  borderRadius: '12px',
                   overflow: 'hidden',
                   border: isHovered ? '1px solid #d4af37' : '1px solid #4a1212',
                   display: 'flex',
@@ -217,30 +214,17 @@ export default function App() {
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
-                        opacity: isHovered ? 0.75 : 1,
+                        opacity: isHovered ? 0.85 : 1,
                         transform: isHovered ? 'scale(1.05)' : 'scale(1)',
                         transition: 'all 0.3s ease'
                       }}
                     />
-                    <div style={{
-                      position: 'absolute',
-                      bottom: '8px',
-                      right: '8px',
-                      backgroundColor: 'rgba(20,3,3,0.8)',
-                      color: '#d4af37',
-                      fontSize: '0.75rem',
-                      padding: '0.3rem 0.6rem',
-                      borderRadius: '4px',
-                      border: '1px solid #d4af37'
-                    }}>
-                      🔍 View Details
-                    </div>
                   </div>
 
-                  <div style={{ padding: '1.2rem' }}>
+                  <div style={{ padding: '1.2rem', backgroundColor: '#F5EBE1', color: '#210505' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.4rem' }}>
                       <h3
-                        style={{ margin: 0, fontSize: '1.15rem', color: '#fff', cursor: 'pointer' }}
+                        style={{ margin: 0, fontSize: '1.15rem', color: '#210505', cursor: 'pointer' }}
                         onClick={() => setActiveProduct(product)}
                       >
                         {product.name}
@@ -251,21 +235,20 @@ export default function App() {
                         </span>
                       )}
                     </div>
-                    <strong style={{ color: '#d4af37', fontSize: '1.1rem', display: 'block', marginBottom: '0.5rem' }}>
+                    <strong style={{ color: '#8B0000', fontSize: '1.1rem', display: 'block' }}>
                       ${product.price.toFixed(2)} / {product.unit}
                     </strong>
                   </div>
                 </div>
 
-                <div style={{ padding: '1.2rem', paddingTop: 0 }}>
+                <div style={{ padding: '1.2rem', backgroundColor: '#F5EBE1' }}>
                   {qty === 0 ? (
                     <GlassButton
                       onClick={() => addToCart(product)}
-                      variant="gold"
                       style={{
                         width: '100%',
-                        padding: '0.7rem',
-                        borderRadius: '6px',
+                        padding: '0.6rem 1rem',
+                        borderRadius: '20px', // Pill rounding to match top navigation buttons
                         fontWeight: 'bold',
                         fontSize: '0.95rem'
                       }}
@@ -273,21 +256,19 @@ export default function App() {
                       + Add to Cart
                     </GlassButton>
                   ) : (
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#140303', borderRadius: '6px', border: '1px solid #d4af37', padding: '0.3rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#2b0808', borderRadius: '20px', border: '1px solid #d4af37', padding: '0.2rem 0.5rem' }}>
                       <GlassButton
                         onClick={() => updateQuantity(product.id, -1)}
-                        variant="danger"
-                        style={{ width: '32px', height: '32px', padding: 0, borderRadius: '4px', fontWeight: 'bold', fontSize: '1.1rem' }}
+                        style={{ width: '32px', height: '32px', padding: 0, borderRadius: '50%', fontWeight: 'bold', fontSize: '1.1rem' }}
                       >
                         -
                       </GlassButton>
-                      <span style={{ fontWeight: 'bold', color: '#d4af37', fontSize: '1rem' }}>
+                      <span style={{ fontWeight: 'bold', color: '#d4af37', fontSize: '0.95rem' }}>
                         {qty} in cart
                       </span>
                       <GlassButton
                         onClick={() => addToCart(product)}
-                        variant="success"
-                        style={{ width: '32px', height: '32px', padding: 0, borderRadius: '4px', fontWeight: 'bold', fontSize: '1.1rem' }}
+                        style={{ width: '32px', height: '32px', padding: 0, borderRadius: '50%', fontWeight: 'bold', fontSize: '1.1rem' }}
                       >
                         +
                       </GlassButton>
@@ -318,8 +299,7 @@ export default function App() {
             <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
               <GlassButton
                 onClick={() => setActiveProduct(null)}
-                variant="outline"
-                style={{ flex: 1, padding: '0.7rem', borderRadius: '6px' }}
+                style={{ flex: 1, padding: '0.7rem', borderRadius: '20px' }}
               >
                 Close
               </GlassButton>
@@ -328,8 +308,7 @@ export default function App() {
                   addToCart(activeProduct);
                   setActiveProduct(null);
                 }}
-                variant="gold"
-                style={{ flex: 1, padding: '0.7rem', borderRadius: '6px', fontWeight: 'bold' }}
+                style={{ flex: 1, padding: '0.7rem', borderRadius: '20px', fontWeight: 'bold' }}
               >
                 Add to Basket
               </GlassButton>
@@ -348,8 +327,7 @@ export default function App() {
             <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
               <GlassButton
                 onClick={() => setAgeCheckProduct(null)}
-                variant="outline"
-                style={{ flex: 1, padding: '0.7rem', borderRadius: '6px' }}
+                style={{ flex: 1, padding: '0.7rem', borderRadius: '20px' }}
               >
                 Cancel
               </GlassButton>
@@ -358,8 +336,7 @@ export default function App() {
                   confirmAddToCart(ageCheckProduct);
                   setAgeCheckProduct(null);
                 }}
-                variant="danger"
-                style={{ flex: 1, padding: '0.7rem', borderRadius: '6px', fontWeight: 'bold' }}
+                style={{ flex: 1, padding: '0.7rem', borderRadius: '20px', fontWeight: 'bold' }}
               >
                 Verify & Add
               </GlassButton>
@@ -389,16 +366,14 @@ export default function App() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <GlassButton
                       onClick={() => updateQuantity(ci.product.id, -1)}
-                      variant="danger"
-                      style={{ width: '28px', height: '28px', padding: 0, borderRadius: '4px', fontWeight: 'bold' }}
+                      style={{ width: '28px', height: '28px', padding: 0, borderRadius: '50%', fontWeight: 'bold' }}
                     >
                       -
                     </GlassButton>
-                    <span style={{ fontWeight: 'bold', width: '20px', textAlign: 'center' }}>{ci.quantity}</span>
+                    <span style={{ fontWeight: 'bold', width: '20px', textAlign: 'center', color: '#fff' }}>{ci.quantity}</span>
                     <GlassButton
                       onClick={() => updateQuantity(ci.product.id, 1)}
-                      variant="success"
-                      style={{ width: '28px', height: '28px', padding: 0, borderRadius: '4px', fontWeight: 'bold' }}
+                      style={{ width: '28px', height: '28px', padding: 0, borderRadius: '50%', fontWeight: 'bold' }}
                     >
                       +
                     </GlassButton>
@@ -415,15 +390,13 @@ export default function App() {
                 <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.3rem', marginBottom: '1rem' }}>
                   <GlassButton
                     onClick={() => setCheckoutMode('pickup')}
-                    variant={checkoutMode === 'pickup' ? 'gold' : 'outline'}
-                    style={{ flex: 1, padding: '0.5rem', borderRadius: '4px', fontWeight: checkoutMode === 'pickup' ? 'bold' : 'normal' }}
+                    style={{ flex: 1, padding: '0.5rem', borderRadius: '20px', fontWeight: checkoutMode === 'pickup' ? 'bold' : 'normal' }}
                   >
                     Pickup
                   </GlassButton>
                   <GlassButton
                     onClick={() => setCheckoutMode('delivery')}
-                    variant={checkoutMode === 'delivery' ? 'gold' : 'outline'}
-                    style={{ flex: 1, padding: '0.5rem', borderRadius: '4px', fontWeight: checkoutMode === 'delivery' ? 'bold' : 'normal' }}
+                    style={{ flex: 1, padding: '0.5rem', borderRadius: '20px', fontWeight: checkoutMode === 'delivery' ? 'bold' : 'normal' }}
                   >
                     Delivery
                   </GlassButton>
@@ -433,15 +406,13 @@ export default function App() {
                 <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.3rem', marginBottom: '1rem' }}>
                   <GlassButton
                     onClick={() => setPaymentType('card')}
-                    variant={paymentType === 'card' ? 'gold' : 'outline'}
-                    style={{ flex: 1, padding: '0.5rem', borderRadius: '4px', fontWeight: paymentType === 'card' ? 'bold' : 'normal' }}
+                    style={{ flex: 1, padding: '0.5rem', borderRadius: '20px', fontWeight: paymentType === 'card' ? 'bold' : 'normal' }}
                   >
                     Card / POS
                   </GlassButton>
                   <GlassButton
                     onClick={() => setPaymentType('cash')}
-                    variant={paymentType === 'cash' ? 'gold' : 'outline'}
-                    style={{ flex: 1, padding: '0.5rem', borderRadius: '4px', fontWeight: paymentType === 'cash' ? 'bold' : 'normal' }}
+                    style={{ flex: 1, padding: '0.5rem', borderRadius: '20px', fontWeight: paymentType === 'cash' ? 'bold' : 'normal' }}
                   >
                     Cash
                   </GlassButton>
@@ -463,8 +434,7 @@ export default function App() {
 
               <GlassButton
                 onClick={handleCompleteCheckout}
-                variant="gold"
-                style={{ width: '100%', padding: '1rem', borderRadius: '8px', fontSize: '1.1rem', fontWeight: 'bold' }}
+                style={{ width: '100%', padding: '0.9rem', borderRadius: '20px', fontSize: '1.05rem', fontWeight: 'bold' }}
               >
                 Complete Checkout & Print Receipt
               </GlassButton>
@@ -517,15 +487,13 @@ export default function App() {
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               <GlassButton
                 onClick={() => window.print()}
-                variant="gold"
-                style={{ flex: 1, padding: '0.6rem', borderRadius: '4px', fontWeight: 'bold' }}
+                style={{ flex: 1, padding: '0.6rem', borderRadius: '20px', fontWeight: 'bold' }}
               >
                 🖨️ Print
               </GlassButton>
               <GlassButton
                 onClick={() => setCompletedOrder(null)}
-                variant="outline"
-                style={{ flex: 1, padding: '0.6rem', borderRadius: '4px' }}
+                style={{ flex: 1, padding: '0.6rem', borderRadius: '20px' }}
               >
                 Done
               </GlassButton>
