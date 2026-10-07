@@ -292,7 +292,7 @@ export default function App() {
             <img src={activeProduct.image} alt={activeProduct.name} style={{ width: '100%', height: '220px', objectFit: 'cover', borderRadius: '8px', border: '1px solid #f3f1e8' }} />
             <p style={{ marginTop: '1rem', lineHeight: '1.6' }}><strong>Description:</strong> {activeProduct.description}</p>
             {activeProduct.tasteProfile && (
-              <p style={{ backgroundColor: '#140303', padding: '0.8rem', borderRadius: '6px', borderLeft: '4px solid #f3f1e8' }}>
+              <p style={{ backgroundColor: '#000000', padding: '0.8rem', borderRadius: '6px', borderLeft: '4px solid #f3f1e8' }}>
                 👅 <strong>Taste Profile:</strong> {activeProduct.tasteProfile}
               </p>
             )}
@@ -449,7 +449,7 @@ export default function App() {
       {/* PRINTABLE RECEIPT MODAL */}
       {completedOrder && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 500, padding: '1rem' }}>
-          <div style={{ backgroundColor: '#ffff', color: '#000', padding: '2rem', borderRadius: '8px', width: '340px', fontFamily: 'monospace', boxShadow: '0 8px 24px rgba(0,0,0,0.5)' }}>
+          <div style={{ backgroundColor: '#899e95', color: '#000000', padding: '2rem', borderRadius: '8px', width: '340px', fontFamily: 'monospace', boxShadow: '0 8px 24px rgba(0,0,0,0.5)' }}>
             <div style={{ textAlign: 'center', marginBottom: '1rem', borderBottom: '1px dashed #000', paddingBottom: '0.8rem' }}>
               <h2 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'sans-serif' }}>🦊 FOX HAVEN FARM STAND</h2>
               <small>123 Harvest Way, Rural Valley</small><br />
