@@ -262,7 +262,7 @@ export default function App() {
       {/* BRAND HERO HEADER */}
       <header style={{ backgroundColor: '#f3f1e8', textAlign: 'center' }}>
         <img
-          src="/images/fox-haven-sage-logo.svg"
+          src="images/fox-haven-sage-logo.svg"
           alt="Fox Haven Farm Stand"
           style={{ maxWidth: '220px', width: '90%', height: 'auto', display: 'block', margin: '0 auto' }}
         />
