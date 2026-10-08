@@ -9,7 +9,7 @@ export const INVENTORY: Product[] = [
     category: 'Vegetables',
     price: 1.50,
     unit: 'each',
-    image: 'images/produce/cucumbers.png',
+    image: 'public/images/produce/cucumbers.png',
     description: 'Crisp, field-grown cucumbers harvested daily.',
     tasteProfile: 'Cool, refreshingly crisp, with a subtle sweet finish.'
   },
