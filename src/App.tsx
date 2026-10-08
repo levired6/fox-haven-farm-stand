@@ -283,58 +283,75 @@ export default function App() {
       </section>
 
       {/* STICKY NAV BAR */}
-      <div style={{ position: 'sticky', top: 0, zIndex: 100, backgroundColor: '#2B2B2B', padding: '0.8rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
-          <input
-            type="text"
-            placeholder="🔍 Search farm stand items..."
-            value={searchQuery}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
-            style={{
-              padding: '0.6rem 1.2rem',
-              borderRadius: '20px',
-              border: '1px solid #f3f1e8',
-              backgroundColor: '#2b0808',
-              color: '#fff',
-              width: '280px',
-              fontSize: '0.95rem'
-            }}
-          />
+<div style={{ position: 'sticky', top: 0, zIndex: 100, backgroundColor: '#2B2B2B', padding: '0.8rem 1rem' }}>
+  <div style={{ 
+    maxWidth: '1200px', 
+    margin: '0 auto', 
+    display: 'flex', 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    gap: '0.8rem',
+    flexWrap: 'wrap' // Allows elements to wrap onto a second row on mobile
+  }}>
+    <input
+      type="text"
+      placeholder="🔍 Search farm stand items..."
+      value={searchQuery}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+      style={{
+        padding: '0.6rem 1.2rem',
+        borderRadius: '20px',
+        border: '1px solid #f3f1e8',
+        backgroundColor: '#2b0808',
+        color: '#fff',
+        flex: '1 1 220px', // Shrinks cleanly on mobile screens
+        maxWidth: '100%',
+        fontSize: '0.95rem',
+        boxSizing: 'border-box'
+      }}
+    />
 
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <GlassButton
-              onClick={() => {
-                if (currentUser) {
-                  setAuthMode('profile');
-                } else {
-                  setAuthMode('login');
-                }
-                setIsAuthModalOpen(true);
-              }}
-              style={{
-                padding: '0.6rem 1.4rem',
-                borderRadius: '20px',
-                fontWeight: 'bold',
-                fontSize: '1rem'
-              }}
-            >
-              👤 {currentUser ? `Hello, ${currentUser.name.split(' ')[0]} (${currentUser.rewardPoints} pts)` : 'Log In / Sign Up'}
-            </GlassButton>
+    <div style={{ 
+      display: 'flex', 
+      gap: '0.6rem', 
+      alignItems: 'center', 
+      flexWrap: 'wrap',
+      justifyContent: 'flex-end',
+      flex: '1 1 auto' 
+    }}>
+      <GlassButton
+        onClick={() => {
+          if (currentUser) {
+            setAuthMode('profile');
+          } else {
+            setAuthMode('login');
+          }
+          setIsAuthModalOpen(true);
+        }}
+        style={{
+          padding: '0.6rem 1.1rem',
+          borderRadius: '20px',
+          fontWeight: 'bold',
+          fontSize: '0.85rem'
+        }}
+      >
+        👤 {currentUser ? `Hello, ${currentUser.name.split(' ')[0]} (${currentUser.rewardPoints} pts)` : 'Log In / Sign Up'}
+      </GlassButton>
 
-            <GlassButton
-              onClick={() => setIsCartOpen(true)}
-              style={{
-                padding: '0.6rem 1.4rem',
-                borderRadius: '20px',
-                fontWeight: 'bold',
-                fontSize: '1rem'
-              }}
-            >
-              🛒 Basket ({totalItemsCount}) • ${cartTotal.toFixed(2)}
-            </GlassButton>
-          </div>
-        </div>
-      </div>
+      <GlassButton
+        onClick={() => setIsCartOpen(true)}
+        style={{
+          padding: '0.6rem 1.1rem',
+          borderRadius: '20px',
+          fontWeight: 'bold',
+          fontSize: '0.85rem'
+        }}
+      >
+        🛒 Basket ({totalItemsCount}) • ${cartTotal.toFixed(2)}
+      </GlassButton>
+    </div>
+  </div>
+</div>
 
       {/* CATEGORY NAV */}
       <nav style={{ backgroundColor: '#2B2B2B', borderBottom: '1px solid #3d0d0d', padding: '1rem 2rem', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', overflowX: 'auto' }}>
