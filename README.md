@@ -36,7 +36,7 @@ I believe local businesses, agriculture, farm stands, and craft breweries deserv
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YOUR_GITHUB_USERNAME/fox-haven-farm-stand.git](https://github.com/YOUR_GITHUB_USERNAME/fox-haven-farm-stand.git)
+   git clone [https://github.com/levired6/fox-haven-farm-stand.git](https://github.com/levired6/fox-haven-farm-stand.git)
    cd fox-haven-farm-stand
 
 2. **Install Dependencies:**
