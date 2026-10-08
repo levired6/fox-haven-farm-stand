@@ -38,3 +38,24 @@ export interface CompletedOrder {
   fulfillmentMode: 'pickup' | 'delivery';
   paymentType: 'card' | 'cash';
 }
+
+export interface SavedCard {
+  id: string;
+  cardNumber: string;
+  expDate: string;
+  cardHolder: string;
+}
+
+export interface UserProfile {
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  email: string;
+  phone: string;
+  birthdate: string;
+  subscribePromotions: boolean;
+  savedCards: SavedCard[];
+  rewardPoints: number; // Rewards Program
+}
