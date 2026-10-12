@@ -168,7 +168,7 @@ export default function App() {
   const cartTotal = subtotal + tax;
   const totalItemsCount = cart.reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
 
-  // AUTHENTICATION HANDLERS
+// AUTHENTICATION HANDLERS
   const handleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
     if (!signupForm.name || !signupForm.email || !signupForm.birthdate) {
@@ -186,19 +186,33 @@ export default function App() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (!loginEmail) return;
+
+    const emailPrefix = loginEmail.split('@')[0];
+    const formattedName = emailPrefix 
+      ? emailPrefix.charAt(0).toUpperCase() + emailPrefix.slice(1) + ' (Demo Guest)'
+      : 'Farm Stand Guest';
+
     const demoUser: UserProfile = {
-      name: 'Levi Redinger',
+      name: formattedName,
       email: loginEmail,
-      address: '123 Harvest Way',
-      city: 'Rural Valley',
+      address: '789 Harvest Lane',
+      city: 'Pleasant Valley',
       state: 'PA',
-      zipCode: '16249',
-      phone: '(555) 019-2834',
-      birthdate: '1995-05-15',
+      zipCode: '17011',
+      phone: '(555) 555-0199',
+      birthdate: '1998-06-20',
       subscribePromotions: true,
-      savedCards: [{ id: 'c1', cardNumber: '•••• 4242', expDate: '12/28', cardHolder: 'Levi Redinger' }],
-      rewardPoints: 120
+      savedCards: [
+        { 
+          id: 'c1', 
+          cardNumber: '•••• 4242', 
+          expDate: '12/28', 
+          cardHolder: formattedName 
+        }
+      ],
+      rewardPoints: 100
     };
+
     setCurrentUser(demoUser);
     setIsAuthModalOpen(false);
     setAuthNotice(null);
