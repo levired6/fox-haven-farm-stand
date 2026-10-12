@@ -750,14 +750,22 @@ export default function App() {
                   </form>
                 </div>
 
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <GlassButton onClick={() => setCurrentUser(null)} style={{ flex: 1, padding: '0.6rem', borderRadius: '20px' }}>
-                    Log Out
-                  </GlassButton>
-                  <GlassButton onClick={() => setIsAuthModalOpen(false)} style={{ flex: 1, padding: '0.6rem', borderRadius: '20px', fontWeight: 'bold' }}>
-                    Done
-                  </GlassButton>
-                </div>
+               <div style={{ display: 'flex', gap: '0.5rem' }}>
+  <GlassButton 
+    onClick={() => {
+      setCurrentUser(null);
+      localStorage.removeItem('fh_user_profile'); // Immediately wipes old cached data
+      setAuthNotice('You have been logged out successfully.');
+      setAuthMode('login');
+    }} 
+    style={{ flex: 1, padding: '0.6rem', borderRadius: '20px' }}
+  >
+    Log Out
+  </GlassButton>
+  <GlassButton onClick={() => setIsAuthModalOpen(false)} style={{ flex: 1, padding: '0.6rem', borderRadius: '20px', fontWeight: 'bold' }}>
+    Done
+  </GlassButton>
+</div> 
               </div>
             )}
           </div>
